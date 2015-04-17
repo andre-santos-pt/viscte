@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aspectj>
+		<weaver options="-showWeaveInfo">
+        	<include within="org.eclipselabs.osgi.viscte.servicemonitor"/>
+    	</weaver>
+    	   
+        <aspects>
+              <aspect name="org.eclipselabs.osgi.viscte.servicemonitor.ServiceMonitor"/>
+        </aspects>
+</aspectj>

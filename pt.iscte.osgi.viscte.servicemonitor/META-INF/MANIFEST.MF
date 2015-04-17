@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Aspects
+Bundle-SymbolicName: pt.iscte.osgi.viscte.servicemonitor;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.osgi.services;bundle-version="0.0.0",
+ org.aspectj.runtime;bundle-version="0.0.0";visibility:=reexport,
+ org.eclipse.equinox.common;bundle-version="0.0.0",
+ org.eclipse.osgi;bundle-version="0.0.0"
+Import-Package: org.osgi.framework;version="0.0.0",
+ pt.iscte.osgi.viscte.serializable
+Bundle-Activator: pt.iscte.osgi.viscte.servicemonitor.bundle.Activator
+Bundle-ActivationPolicy: lazy
+Export-Package: pt.iscte.osgi.viscte.servicemonitor

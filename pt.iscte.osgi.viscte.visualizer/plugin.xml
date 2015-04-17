@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="org.eclipselabs.osgi.viscte.visualizer"
+         name="Bundle view"
+         point="org.eclipse.ui.views">
+      <view
+            class="pt.iscte.osgi.viscte.visualizer.BundleView"
+            icon="icons/component.png"
+            id="org.eclipselabs.osgi.viscte.visualizer"
+            name="Components">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="pt.iscte.osgi.viscte.visualizer.commands.CaptureCommand"
+            id="org.eclipselabs.osgi.viscte.visualizer.commands.capture"
+            name="Capture">
+         <state
+               class="org.eclipse.jface.commands.ToggleState"
+               id="org.eclipselabs.osgi.viscte.visualizer.commands.state">
+         </state>
+      </command>
+      <command
+            defaultHandler="pt.iscte.osgi.viscte.visualizer.commands.BackCommand"
+            id="org.eclipselabs.osgi.viscte.visualizer.commands.back"
+            name="Back">
+      </command>
+      <command
+            defaultHandler="pt.iscte.osgi.viscte.visualizer.commands.ForwardCommand"
+            id="org.eclipselabs.osgi.viscte.visualizer.commands.forward"
+            name="Forward">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="toolbar:org.eclipselabs.osgi.viscte.visualizer?after=additions">
+         <command
+               commandId="org.eclipselabs.osgi.viscte.visualizer.commands.capture"
+               icon="icons/capture.png"
+               label="Capture"
+               style="toggle"
+               tooltip="Capture">
+         </command>
+         <command
+               commandId="org.eclipselabs.osgi.viscte.visualizer.commands.back"
+               icon="icons/left.png"
+               label="Back"
+               style="push">
+         </command>
+         <command
+               commandId="org.eclipselabs.osgi.viscte.visualizer.commands.forward"
+               icon="icons/right.png"
+               label="Forward"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+
+</plugin>

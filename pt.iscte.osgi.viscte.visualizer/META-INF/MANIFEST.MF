@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: OSGi Runtime Visualization
+Bundle-SymbolicName: pt.iscte.osgi.viscte.visualizer;singleton:=true
+Bundle-Version: 0.1
+Bundle-Activator: pt.iscte.osgi.viscte.visualizer.bundle.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui;bundle-version="3.6.0",
+ org.eclipse.zest.core;bundle-version="1.5.100",
+ org.eclipse.zest.layouts;bundle-version="1.1.100",
+ org.eclipse.emf.ecore;bundle-version="2.9.1",
+ pt.iscte.osgi.viscte.model;bundle-version="0.1.0",
+ org.eclipse.core.expressions;bundle-version="3.4.200",
+ pt.iscte.osgi.viscte.servicemonitor;bundle-version="1.0.0",
+ org.eclipse.core.resources;bundle-version="3.9.1",
+ org.eclipse.ui.ide;bundle-version="3.10.1"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: pt.iscte.osgi.viscte.visualizer
