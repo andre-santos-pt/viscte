@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: PlataformListener
-Bundle-SymbolicName: pt.iscte.osgi.viscte.bundlemonitor
+Bundle-SymbolicName: pt.iscte.osgi.viscte.bundlemonitor;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy

@@ -11,7 +11,7 @@ public class Activator implements BundleActivator {
 
 	private static Activator instance;
 	
-	private ServiceRegistration registration;
+//	private ServiceRegistration registration;
 	
 	private BundleListenerImpl bundleListener;
 	
@@ -23,6 +23,7 @@ public class Activator implements BundleActivator {
 	
 	@Override
 	public void start(BundleContext context) throws Exception {
+		System.out.println("BUNDLE MONITOR");
 		instance = this;
 		bundleListener = new BundleListenerImpl();
 		serviceListener = new ServiceListenerImpl();
@@ -32,7 +33,7 @@ public class Activator implements BundleActivator {
 
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		registration.unregister();
+//		registration.unregister();
 		context.removeBundleListener(bundleListener);
 		context.removeServiceListener(serviceListener);
 		bundleListener = null;

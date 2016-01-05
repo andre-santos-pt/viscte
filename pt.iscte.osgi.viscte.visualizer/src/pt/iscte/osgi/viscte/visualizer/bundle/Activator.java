@@ -8,7 +8,7 @@ import pt.iscte.osgi.viscte.visualizer.server.ThreadPooledServer;
 
 public class Activator implements BundleActivator {
 
-	public static final String PLUGIN_ID = "org.eclipselabs.osgi.viscte.visualizer";
+	public static final String PLUGIN_ID = "pt.iscte.osgi.viscte.visualizer";
 	private static Activator instance;
 	
 	public static Activator getInstance() {

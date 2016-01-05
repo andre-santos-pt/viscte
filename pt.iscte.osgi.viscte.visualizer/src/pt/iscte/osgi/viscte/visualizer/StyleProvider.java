@@ -32,7 +32,8 @@ import pt.iscte.osgi.viscte.visualizer.bundle.Activator;
 import pt.iscte.osgi.viscte.visualizer.bundlegraphmanager.BundleGraphUtils;
 
 public class StyleProvider extends LabelProvider implements IEntityStyleProvider, IConnectionStyleProvider , IFigureProvider { // IEntityConnectionStyleProvider  {
-	private Image componentImg;
+	private Image componentImgNoServ;
+	private Image componentImgServ;
 	private Font font;
 	private GC gc;
 	
@@ -46,8 +47,10 @@ public class StyleProvider extends LabelProvider implements IEntityStyleProvider
 	public static final Color WHITE_COLOR = new Color(null, 255, 255, 255);
 	
 	public StyleProvider() {
-		ImageDescriptor img =  AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/component2.png");
-		componentImg = img.createImage();
+		ImageDescriptor imgServ =  AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/component.png");
+		componentImgServ = imgServ.createImage();
+		ImageDescriptor imgNoServ =  AbstractUIPlugin.imageDescriptorFromPlugin(Activator.PLUGIN_ID, "icons/component2.png");
+		componentImgNoServ = imgNoServ.createImage();
 		Display display = Display.getDefault();
 		font = new Font(display, "Arial", 10, SWT.NONE);
 		gc = new GC(display);
@@ -89,11 +92,7 @@ public class StyleProvider extends LabelProvider implements IEntityStyleProvider
 			String services = "";
 			if (component.getServices().size() > 0) {
 				for (Service service : component.getServices()) {
-					if (services.isEmpty()) {
-						services += service.getId();
-					} else {
-						services += ", " + service.getId();
-					}
+					services += "\n" + service.getId();
 				}
 			} else {
 				services += "None";
@@ -109,11 +108,7 @@ public class StyleProvider extends LabelProvider implements IEntityStyleProvider
 			String services = "";
 			for (Connection conn : client.getConnections()) {
 				if (conn.getService().getComponent().getId().equals(supplier.getId())) {
-					if (services.isEmpty()) {
-						services += conn.getService().getId();
-					} else {
-						services += ", " + conn.getService().getId();
-					}
+					services += "\n" + conn.getService().getId();
 				}
 			}
 			Label label = new Label(String.format("Services: %s", services));
@@ -193,7 +188,8 @@ public class StyleProvider extends LabelProvider implements IEntityStyleProvider
 	@Override
 	public IFigure getFigure(Object entity) {
 		if (entity instanceof Component)  {
-			String id = ":" + BundleGraphUtils.getSimplifiedId((Component) entity);
+			Component comp = (Component) entity;
+			String id = ":" + BundleGraphUtils.getSimplifiedId(comp);
 			org.eclipse.swt.graphics.Point p = gc.textExtent(id);
 			
 			int boxWidth = Math.max(p.x + 20, 80);
@@ -207,12 +203,12 @@ public class StyleProvider extends LabelProvider implements IEntityStyleProvider
 			text.setFont(font);
 			box.add(text);
 			
-			Label icon = new Label(componentImg);
+			Label icon = new Label(comp.getServices().isEmpty() ? componentImgNoServ : componentImgServ);
 			icon.setLocation(new Point(boxWidth - 20, 2));
 			icon.setSize(16,16);
 			box.add(icon);
-			box.setToolTip(getTooltip(entity));
-			componentMap.put(box, (Component) entity);
+			box.setToolTip(getTooltip(comp));
+			componentMap.put(box, comp);
 			return box;
 		}		
 		return null;
