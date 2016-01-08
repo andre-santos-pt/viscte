@@ -3,7 +3,7 @@ This is a tool for runtime exploration of OSGi systems, integrated with Eclipse.
 
 # Installation
 
-In order to install VISCTE on your Eclipse, download **viscte_plugins.zip** from the Releases section and unzip the contained jar files into Eclipse *dropins* folder. This Eclipse plugin will add a new view named *Components* (category: Other). The plugin was tested on Eclipse Mars release. Uninstall simply by deleting the jars from the *dropins* folder.
+In order to install VISCTE on your Eclipse, download [**viscte_plugins.zip**](https://github.com/andre-santos-pt/viscte/releases/tag/1) from the Releases section and unzip the contained jar files into Eclipse *dropins* folder. This Eclipse plugin will add a new view named *Components* (category: Other). The plugin was tested on Eclipse Mars release. Uninstall simply by deleting the jars from the *dropins* folder.
 
 # Project setup
 In order to use VISCTE, you must configure the projects and launch configuration of the system that you want to explore.
